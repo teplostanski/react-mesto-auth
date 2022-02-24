@@ -1,0 +1,25 @@
+@import url(./__img/card__img.css);
+@import url(./__items/card__items.css);
+@import url(./__capture/card__capture.css);
+@import url(./__like-button/card__like-button.css);
+@import url(./__like-button/_active/card__like-button_active.css);
+@import url(./__delete-button/card__delete-button.css);
+@import url(./__delete-button/_visible/card__delete-button_visible.css);
+@import url(./__like-counter/card__like-counter.css);
+
+.card {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: white;
+  max-width: 282px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card:hover {
+  cursor: pointer;
+}

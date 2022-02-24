@@ -1,0 +1,11 @@
+.popup__input_error {
+  border-bottom: 1px solid #FF0000;
+  margin: 0 34px 5px;
+}
+
+@media screen and (max-width: 630px) {
+  .popup__input_error {
+    width: 238px;
+    margin: 0 20px 5px;
+  }
+}
