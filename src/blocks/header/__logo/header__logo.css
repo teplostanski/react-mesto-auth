@@ -1,11 +1,26 @@
 .header__logo {
-  max-width: 142px;
-  margin-bottom: 37px;
+  background-image: url(../../../images/logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 142px;
+  height: 33px;
+  display: block;
+  transition: opacity .3s linear;
 }
 
-@media screen and (max-width: 910px) {
+.header__logo:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 916px) {
   .header__logo {
-    max-width: 32%;
-    margin: 0 0 28px 27px;
+    margin-left: 27px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header__logo {
+    width: 104px;
+    height: 24px;
   }
 }

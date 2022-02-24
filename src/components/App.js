@@ -12,6 +12,8 @@ import ConfirmationPopup from "./ConfirmationPopup";
 
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./RequireAuth";
+import Login from "./Login";
+import Register from "./Register";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -144,9 +146,15 @@ function App() {
       <Routes>
         <Route
           path="/sign-up"
+          element={
+            <Register />
+          }
         />
         <Route
           path="/sign-in"
+          element={
+            <Login />
+          }
         />
         <Route
           path="/"
