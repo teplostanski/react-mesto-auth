@@ -1,6 +1,6 @@
 .header__link {
   font-size: 18px;
   line-height: 22px;
-  color: var(--basic-white);
+  color: white;
   text-decoration: none;
 }

@@ -14,3 +14,17 @@
 
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/space/space.css);
+@import url(./blocks/center/center.css);
+@import url(./blocks/form/form.css);
+@import url(./blocks/form/__input/form__input.css);
+@import url(./blocks/form/__input/_place/form__input_place_auth.css);
+@import url(./blocks/form/__input/_type/form__input_type_error.css);
+@import url(./blocks/form/__additional-text/form__additional-text.css);
+@import url(./blocks/form/_place/form_place_auth.css);
+@import url(./blocks/form/__link/form__link.css);
+@import url(./blocks/form/__submit/form__submit.css);
+@import url(./blocks/form/__submit/_disabled/form__submit_disabled.css);
+@import url(./blocks/form/__submit/_place/form__submit_place_auth.css);
+@import url(./blocks/form/__title/form__title.css);
+@import url(./blocks/form/__field/form__field.css);
+@import url(./blocks/form/__fields/form__fields.css);

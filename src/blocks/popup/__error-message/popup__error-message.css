@@ -1,10 +1,11 @@
 .popup__error-message {
-  display: none;
+  
   color: #FF0000;
   font-size: 12px;
   line-height: 15px;
   text-align: left;
   margin: 0 36px 8px;
+  min-height: 15px;
 }
 
 @media screen and (max-width: 630px) {

@@ -15,11 +15,11 @@ function FormAuth(props) {
       <fieldset className="form__fields">
         <label className="form__field">
           <input value={values.email || ''} onChange={handleChange} className={`form__input form__input_place_auth ${!errors.email ? '' : 'form__input_type_error'}`} type="email" name="email" placeholder="Email" required />
-          <span className={`form__input-error ${!errors.email ? '' : 'form__input-error_visible'}`}>{errors.email}</span>
+          <span className={`popup__error-message ${!errors.email ? '' : 'popup__error-message_active'}`}>{errors.email}</span>
         </label>
         <label className="form__field">
           <input value={values.password || ''} onChange={handleChange} className={`form__input form__input_place_auth ${!errors.password ? '' : 'form__input_type_error'}`} type="password" name="password" placeholder="Пароль" required />
-          <span className={`form__input-error ${!errors.password ? '' : 'form__input-error_visible'}`}>{errors.password}</span>
+          <span className={`popup__error-message ${!errors.password ? '' : 'popup__error-message_active'}`}>{errors.password}</span>
         </label>
       </fieldset>
       <div className="space"></div>

@@ -1,0 +1,14 @@
+﻿.form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0;
+  border: none;
+  margin: 0 0 25px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .form__fields {
+    margin-bottom: 45px;
+  }
+}

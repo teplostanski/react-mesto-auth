@@ -5,6 +5,9 @@
   border-bottom: solid 1px rgb(84, 84, 84, 0.7);
   max-width: 880px;
   min-width: 300px;
+  display: flex;
+  align-items: center;
+  min-height: 120px;
 }
 
 @media screen and (max-width: 400px) {

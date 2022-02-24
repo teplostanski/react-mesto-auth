@@ -1,0 +1,7 @@
+.form_place_auth {
+   background-color: transparent;
+   color: white;
+   height: calc(100vh - 120px - 5px);
+   padding-top: 60px;
+   padding-bottom: 80px;
+}

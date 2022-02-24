@@ -1,0 +1,17 @@
+﻿.form {
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  padding: 34px 36px 37px 36px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 500px) {
+  .form {
+    width: 282px;
+    padding: 25px 22px 25px 22px;
+  }
+}
