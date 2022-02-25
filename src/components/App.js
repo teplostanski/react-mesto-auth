@@ -14,20 +14,25 @@ import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./RequireAuth";
 import Login from "./Login";
 import Register from "./Register";
+import { useAuth } from "../hooks/useAuth";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(undefined);
   const [cardToDelete, setCardToDelete] = useState(undefined);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
+  const { authInfo, handleSignup, handleSignin, checkToken, handleLogout } = useAuth();
+
   useEffect(() => {
+    checkToken();
     api
-      .getUserInfo()
+    .getUserInfo()
       .then((res) => {
         setCurrentUser(res);
       })
@@ -112,6 +117,7 @@ function App() {
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
+    setIsImagePopupOpen(true);
   };
 
   const handleEditAvatarClick = () => {
@@ -135,6 +141,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsConfirmationPopupOpen(false);
     setSelectedCard(undefined);
+    setIsImagePopupOpen(true);
     setCardToDelete(undefined);
   };
 
@@ -142,24 +149,24 @@ function App() {
     <div className="page">
     <CurrentUserContext.Provider value={currentUser}>
 
-      <Header />
+    <Header handleLogout={handleLogout} {...authInfo} />
       <Routes>
         <Route
           path="/sign-up"
           element={
-            <Register />
+            <Register handleSubmit={handleSignup} />
           }
         />
         <Route
           path="/sign-in"
           element={
-            <Login />
+            <Login handleSubmit={handleSignin} />
           }
         />
         <Route
           path="/"
           element={
-            <RequireAuth redirectTo="/sign-in">
+            <RequireAuth {...authInfo} redirectTo="/sign-in">
               <Main
                 onAddPlace={handleAddPlaceClick}
                 onEditAvatar={handleEditAvatarClick}
@@ -170,23 +177,31 @@ function App() {
                 onCardLike={handleCardLike}
               />
               <Footer />
-              <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+              <ImagePopup
+                card={selectedCard}
+                onClose={closeAllPopups}
+                setOpenState={setIsAddPlacePopupOpen}
+                isOpen={isImagePopupOpen}
+              />
               <EditProfilePopup
                 isOpen={isEditProfilePopupOpen}
                 onClose={closeAllPopups}
                 onUpdateUser={handleUpdateUser}
+                setOpenState={setIsEditProfilePopupOpen}
               />
 
               <AddPlacePopup
                 isOpen={isAddPlacePopupOpen}
                 onClose={closeAllPopups}
                 onAddNewCard={handleAddPlaceSubmit}
+                setOpenState={setIsAddPlacePopupOpen}
               />
 
               <EditAvatarPopup
                 isOpen={isEditAvatarPopupOpen}
                 onClose={closeAllPopups}
                 onUpdateAvatar={handleUpdateAvatar}
+                setOpenState={setIsAddPlacePopupOpen}
               />
 
               <ConfirmationPopup
