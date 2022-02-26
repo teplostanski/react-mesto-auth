@@ -22,8 +22,8 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(undefined);
-  const [cardToDelete, setCardToDelete] = useState(undefined);
+  const [selectedCard, setSelectedCard] = useState({});
+  const [cardToDelete, setCardToDelete] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
@@ -150,6 +150,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
 
     <Header handleLogout={handleLogout} {...authInfo} />
+
       <Routes>
         <Route
           path="/sign-up"
@@ -163,6 +164,7 @@ function App() {
             <Login handleSubmit={handleSignin} />
           }
         />
+
         <Route
           path="/"
           element={
@@ -176,13 +178,8 @@ function App() {
                 onCardDelete={handleConfirmationClick}
                 onCardLike={handleCardLike}
               />
-              <Footer />
-              <ImagePopup
-                card={selectedCard}
-                onClose={closeAllPopups}
-                setOpenState={setIsAddPlacePopupOpen}
-                isOpen={isImagePopupOpen}
-              />
+
+
               <EditProfilePopup
                 isOpen={isEditProfilePopupOpen}
                 onClose={closeAllPopups}
@@ -211,10 +208,19 @@ function App() {
                 card={cardToDelete}
               />
             </RequireAuth>
-          }
-        />
-      </Routes>
 
+          }
+
+        />
+
+      </Routes>
+      <ImagePopup
+        card={selectedCard}
+        onClose={closeAllPopups}
+        setOpenState={setIsAddPlacePopupOpen}
+        isOpen={isImagePopupOpen}
+      />
+      <Footer />
     </CurrentUserContext.Provider>
     </div>
   );
