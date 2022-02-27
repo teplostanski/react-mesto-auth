@@ -4,11 +4,12 @@
   background-image: url("../../../images/add-button_plus.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-color: unset;
+  background-color: transparent;
   border: 2px solid #FFFFFF;
   box-sizing: border-box;
   border-radius: 2px;
-  margin: 74px 0 0 auto;
+  background-size: 22px 22px;
+  
 }
 
 @media screen and (max-width: 880px) {

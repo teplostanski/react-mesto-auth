@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   min-height: 120px;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 400px) {

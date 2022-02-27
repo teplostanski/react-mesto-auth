@@ -1,48 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "../context/CurrentUserContext";
+import React from "react";
 
-export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  const avatarRef = React.useRef(0);
-  const currentUser = useContext(CurrentUserContext);
-  const [link, setLink] = useState("");
+export default function EditAvatarPopup(props) {
+  const avatarRef = React.useRef();
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
-    onUpdateAvatar({
-      avatar: avatarRef.current.value,
-      name: currentUser.name,
-      about: currentUser.about,
-    });
-
-    evt.target.reset();
+    props.onUpdateAvatar(avatarRef.current.value);
   }
-
-  useEffect(() => {
-    if (isOpen) {
-      setLink("");
-    };
-  }, [isOpen]);
-
 
   return (
     <PopupWithForm
       title="Обновить аватар"
       name="changeAvatar"
-      submitText="Сохранить"
-      isOpen={isOpen}
-      onClose={onClose}
+      button="Сохранить"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      closeByOverlay={props.closeByOverlay}
       onSubmit={handleSubmit}
     >
-      <label>
+      <label className="form__field">
         <input
-          className="popup__input"
           type="url"
-          name="avatar"
+          name="photo"
           id="popup-change-avatar-url"
           placeholder="Ссылка на картинку"
-          required
+          required className="form__input"
           ref={avatarRef}
         />
         <span className="popup__error-message popup-change-avatar-url-error"></span>

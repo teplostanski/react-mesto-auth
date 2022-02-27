@@ -3,11 +3,14 @@
   height: 32px;
   background-image: url("../../../images/close_icon.svg");
   border: none;
-  background-color: unset;
+  transition: opacity 0.2s ease-out;
+  padding: 0;
+  background-color: transparent;
   background-position: center;
-  position: absolute;
-  right: -40px;
-  top: -40px;
+  background-repeat: no-repeat;
+  grid-column: 3;
+  grid-row: 1;
+  align-self: flex-end;
 }
 
 .popup__close:hover {
@@ -19,8 +22,7 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    background-size: contain;
-    right: 1px;
-    top: -37px;
+    grid-column: 2;
+    justify-self: right;
   }
 }

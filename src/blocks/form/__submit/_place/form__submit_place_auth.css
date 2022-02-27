@@ -1,5 +1,6 @@
 .form__submit_place_auth {
-  background: white;
-  color: black;
-  border: 1px solid black;
+  color: #000;
+  background: #fff;
+  margin-top: 190px;
+  margin-bottom: 15px;
 }

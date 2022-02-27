@@ -5,15 +5,16 @@
 @import url(./blocks/main/main.css);
 @import url(./blocks/button/button.css);
 @import url(./blocks/profile/profile.css);
-@import url(./blocks/cards-section/cards-section.css);
 @import url(./blocks/cards/cards.css);
 @import url(./blocks/card/card.css);
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/_opened/popup_opened.css);
 
+
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__info/header__info.css);
+@import url(./blocks/header/__auth/header__auth.css);
 @import url(./blocks/space/space.css);
 @import url(./blocks/center/center.css);
 @import url(./blocks/form/form.css);
@@ -28,7 +29,6 @@
 @import url(./blocks/form/__submit/_place/form__submit_place_auth.css);
 @import url(./blocks/form/__title/form__title.css);
 @import url(./blocks/form/__field/form__field.css);
-@import url(./blocks/form/__fields/form__fields.css);
 @import url(./blocks/info-tooltip/info-tooltip.css);
 @import url(./blocks/info-tooltip/__icon/info-tooltip__icon.css);
 @import url(./blocks/info-tooltip/__icon/_type/info-tooltip__icon_type_error.css);

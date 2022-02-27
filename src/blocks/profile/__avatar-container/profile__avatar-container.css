@@ -1,0 +1,7 @@
+.profile__avatar-container {
+  position: relative;
+}
+
+.profile__avatar-container:hover .profile__img-wrapper {
+  opacity: 1;
+}

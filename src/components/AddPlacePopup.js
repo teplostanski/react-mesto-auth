@@ -1,56 +1,46 @@
-import React, { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
+import React from "react";
 
-export default function AddPlacePopup({ isOpen, onClose, onAddNewCard }) {
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+export default function AddPlacePopup(props) {
+  const titleRef = React.useRef();
+  const linkRef = React.useRef();
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddNewCard({ name, link });
+    props.onAddNewCard(titleRef.current.value, linkRef.current.value);
   }
-
-  useEffect(() => {
-    if (isOpen) {
-      setName("");
-      setLink("");
-    };
-   }, [isOpen]);
 
   return (
     <PopupWithForm
       title="Новое место"
       name="profileaddCard"
-      submitText="Создать"
-      isOpen={isOpen}
-      onClose={onClose}
+      button="Создать"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      closeByOverlay={props.closeByOverlay}
       onSubmit={handleSubmit}
     >
-      <label>
+      <label className="form__field">
         <input
-          className="popup__input"
           type="text"
           name="place"
           id="popup-place-name"
           placeholder="Название места"
-          required
+          required className="form__input"
           maxLength="30"
           minLength="2"
-          value={name}
-          onChange={(evt) => setName(evt.target.value)}
+          ref={titleRef}
         />
         <span className="popup__error-message popup-place-name-error"></span>
       </label>
-      <label>
+      <label className="form__field">
         <input
-          className="popup__input"
           type="url"
-          name="url"
+          name="link"
           id="popup-place-url"
           placeholder="Ссылка на картинку"
-          required
-          value={link}
-          onChange={(evt) => setLink(evt.target.value)}
+          required className="form__input"
+          ref={linkRef}
         />
         <span className="popup__error-message popup-place-url-error"></span>
       </label>

@@ -1,5 +1,13 @@
-.popup__figcuption {
+.popup__figcaption {
+  font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  text-align: left;
+  grid-column: 2;
+  grid-row: 3;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 210px;
 }

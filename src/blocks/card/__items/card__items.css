@@ -1,8 +1,7 @@
 .card__items {
-  display: grid;
-  grid-template-columns: 220px 23px;
-  grid-template-rows: 14px 24px;
-  margin: 17px 20px 25px 18px;
-  align-items: start;
-  justify-items: start;
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 20px;
+  height: inherit;
+  align-items: center;
 }

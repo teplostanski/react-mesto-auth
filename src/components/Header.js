@@ -1,39 +1,38 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import logoPath from '../images/logo.svg';
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
 
-function Header({loggedIn, email, handleLogout}) {
+function Header(props) {
+  const navigate = useNavigate();
 
-  const { pathname } = useLocation();
-  const [ linkProps, setLinkProps ] = useState({href: '', text: ''})
-
-  useEffect(() => {
-    if (pathname === '/sign-in') {
-      setLinkProps({
-        href: '/sign-up',
-        text: 'Регистрация',
-      })
-    } else if (loggedIn) {
-      setLinkProps({
-        href: '/sign-in',
-        text: 'Выйти',
-        onClick: handleLogout
-      })
-    } else {
-      setLinkProps({
-        href: '/sign-in',
-        text: 'Войти'
-      })
-    }
-  }, [pathname, loggedIn, handleLogout])
+  function signOut() {
+    localStorage.removeItem('jwt');
+    props.handleLogout();
+    navigate('/sign-in');
+  }
 
   return (
     <header className="header">
-      <Link to="/" className="header__logo" aria-label="Перейти на главную"></Link>
-      <div className="space"></div>
-      <p className="header__info">{email}</p>
-      <Link to={linkProps.href} onClick={linkProps.onClick} className="header__link button">{linkProps.text}</Link>
+      <img className="header__logo" src={logoPath} alt="Лого"/>
+      <div className="header__auth">
+        {props.isLoggedIn
+          ?
+          <>
+            <div className="header__info">{props.currentUserEmail}</div>
+            <Link to="/sign-in" className="header__link" onClick={signOut}> Выйти </Link>
+          </>
+          :
+          <>
+            {window.location.pathname === "/sign-up" && <Link to="/sign-in" className="header__link"> Войти </Link>}
+            {window.location.pathname === "/sign-in" &&
+            <Link to="/sign-up" className="header__link"> Зарегистрироваться </Link>}
+          </>
+        }
+      </div>
+
     </header>
   );
 }
 
 export default Header;
+

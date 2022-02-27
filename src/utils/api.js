@@ -23,17 +23,23 @@ class Api {
     return this._fetch("/cards");
   }
 
-  updateUserInfo(data) {
+  updateUserInfo(name, about) {
     return this._fetch("/users/me", {
       method: "PATCH",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: name,
+        about: about
+      }),
     });
   }
 
-  addNewCard(data) {
+  addNewCard(name, link) {
     return this._fetch("/cards", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: name,
+        link: link
+      }),
     });
   }
 
@@ -59,10 +65,12 @@ class Api {
     });
   }
 
-  changeAvatar(data) {
+  changeAvatar(link) {
     return this._fetch("/users/me/avatar", {
       method: "PATCH",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        avatar: link,
+      }),
     });
   }
 }

@@ -4,7 +4,7 @@
 @import url(./__like-button/card__like-button.css);
 @import url(./__like-button/_active/card__like-button_active.css);
 @import url(./__delete-button/card__delete-button.css);
-@import url(./__delete-button/_visible/card__delete-button_visible.css);
+@import url(./__delete-button/_hidden/card__delete-button_hidden.css);
 @import url(./__like-counter/card__like-counter.css);
 
 .card {

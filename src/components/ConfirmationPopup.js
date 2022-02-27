@@ -1,20 +1,21 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function ConfirmationPopup({ isOpen, onClose, onSubmit, card }) {
+export default function ConfirmationPopup(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSubmit(card);
+    props.onSubmit(props.card);
   }
 
   return (
     <PopupWithForm
       title="Вы уверены?"
       name="confirmation"
-      submitText="Да"
-      isOpen={isOpen}
-      onClose={onClose}
+      button="Да"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
       onSubmit={handleSubmit}
+      closeByOverlay={props.closeByOverlay}
     ></PopupWithForm>
   );
 }

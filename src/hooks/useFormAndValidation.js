@@ -5,11 +5,11 @@ export function useFormAndValidation() {
   const [ errors, setErrors ] = useState({});
   const [ isValid, setIsValid ] = useState(false);
 
-  const handleChange = (e) => {
-    const {name, value} = e.target;
+  const handleChange = (evt) => {
+    const {name, value} = evt.target;
     setValues({...values, [name]: value });
-    setErrors({...errors, [name]: e.target.validationMessage});
-    setIsValid(e.target.closest('form').checkValidity());
+    setErrors({...errors, [name]: evt.target.validationMessage});
+    setIsValid(evt.target.closest('form').checkValidity());
   };
 
   const resetForm = useCallback((newValues = {}, newErrors = {}, newIsValid = false) => {

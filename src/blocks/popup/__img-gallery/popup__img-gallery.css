@@ -1,5 +1,7 @@
 .popup__img-gallery {
   max-width: 75vw;
   max-height: 75vh;
-  object-fit: contain;
+  object-fit: cover;
+  grid-column: 2;
+  grid-row: 2;
 }

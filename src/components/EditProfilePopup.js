@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 import CurrentUserContext from "../context/CurrentUserContext";
 
-export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
+export default function EditProfilePopup(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const currentUser = useContext(CurrentUserContext);
@@ -12,51 +12,54 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     setDescription(currentUser.about);
   }, [currentUser]);
 
+  function handleNameChange(evt) {
+    setName(evt.target.value)
+  }
+
+  function handleDescriptionChange(evt) {
+    setDescription(evt.target.value)
+  }
+
   function handleSubmit(evt) {
     evt.preventDefault();
-
-    onUpdateUser({
-      name,
-      about: description,
-    });
+    props.onUpdateUser(name, description);
   }
 
   return (
     <PopupWithForm
       title="Редактировать профиль"
       name="profile"
-      submitText="Сохранить"
-      isOpen={isOpen}
-      onClose={onClose}
+      button="Сохранить"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
       onSubmit={handleSubmit}
+      closeByOverlay={props.closeByOverlay}
     >
-      <label>
+      <label className="form__field">
         <input
-          className="popup__input"
           type="text"
           name="name"
           id="popup-profile-title"
           placeholder="Ваше имя"
-          value={name || ''}
-          required
+          value={name}
+          required className="form__input"
           maxLength="40"
           minLength="2"
-          onChange={(evt) => setName(evt.target.value)}
+          onChange={handleNameChange}
         />
         <span className="popup__error-message popup-profile-title-error"></span>
       </label>
-      <label>
+      <label className="form__field">
         <input
-          className="popup__input"
           type="text"
           name="about"
           id="popup-profile-description"
           placeholder="Расскажите о себе"
-          value={description || ''}
-          required
+          value={description}
+          required className="form__input"
           maxLength="200"
           minLength="2"
-          onChange={(evt) => setDescription(evt.target.value)}
+          onChange={handleDescriptionChange}
         />
         <span className="popup__error-message popup-profile-description-error"></span>
       </label>

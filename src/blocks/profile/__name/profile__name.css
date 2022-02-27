@@ -4,9 +4,11 @@
   line-height: 48px;
   max-width: 520px;
   margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 880px) {

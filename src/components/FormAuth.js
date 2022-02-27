@@ -1,60 +1,62 @@
-import { useState } from "react";
-import { useFormAndValidation } from "../hooks/useFormAndValidation";
-import InfoTooltip from "./InfoTooltip";
+import {Link} from "react-router-dom";
+import React, { useState } from "react";
 
 function FormAuth(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { values, handleChange, errors, isValid } = useFormAndValidation()
+  function handleEmailChange(evt) {
+    setEmail(evt.target.value)
+  }
 
-  const defaultErrorText = 'Что-то пошло не так! Попробуйте ещё раз.';
+  function handlePasswordChange(evt) {
+    setPassword(evt.target.value)
+  }
 
-  const [ status, setStatus ] = useState({ok: false, text: defaultErrorText});
-  const [ isInfoTooltipOpen, setIsInfoTooltipOpen ] = useState(false);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    props.handleSubmit(values)
-      .then(res => {
-        setStatus({
-          ok: true,
-          text: props.succesText || 'Успешно!',
-        })
-        setIsInfoTooltipOpen(true);
-      })
-      .catch(err => {
-        setStatus({
-          ok: false,
-          text: err.text || defaultErrorText,
-        })
-        setIsInfoTooltipOpen(true);
-      })
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    props.onSubmit(email, password);
   }
 
   return (
-    <>
-      <form className="form form_place_auth center" action="post" name={`form-${props.name}`} onSubmit={handleSubmit} noValidate>
-        <h2 className="form__title center">{props.title}</h2>
-        <fieldset className="form__fields">
-          <label className="form__field">
-            <input value={values.email || ''} onChange={handleChange} className={`form__input form__input_place_auth ${!errors.email ? '' : 'form__input_type_error'}`} type="email" name="email" placeholder="Email" required />
-            <span className={`form__input-error ${!errors.email ? '' : 'form__input-error_visible'}`}>{errors.email}</span>
-          </label>
-          <label className="form__field">
-            <input value={values.password || ''} onChange={handleChange} className={`form__input form__input_place_auth ${!errors.password ? '' : 'form__input_type_error'}`} type="password" name="password" placeholder="Пароль" required />
-            <span className={`form__input-error ${!errors.password ? '' : 'form__input-error_visible'}`}>{errors.password}</span>
-          </label>
-        </fieldset>
+    <div>
+
+      <form className="form form_place_auth center" name={`${props.name}form`} noValidate onSubmit={handleSubmit}>
+      <h2 className="form__title center">{props.title}</h2>
+        <label className="form__field">
+          <input
+            id="form__input form__input_place_auth"
+            required className="form__input form__input_place_auth"
+            type="email"
+            name="email"
+            placeholder="email"
+            minLength="4"
+            maxLength="40"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <span className="form__input-error form__input-error_visible"/>
+        </label>
+        <label className="form__field">
+          <input
+            id="password-input"
+            required className="form__input form__input_place_auth"
+            type="password"
+            name="password"
+            placeholder="password"
+            minLength="8"
+            maxLength="200"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <span className="form__input-error form__input-error_visible"/>
+        </label>
         <div className="space"></div>
-        <button className={`form__submit form__submit_place_auth ${!isValid ? 'form__submit_disabled' : ''} button`} type="submit" disabled={!isValid}>{props.buttonText}</button>
-        {props.additionalText}
+        <button className="form__submit form__submit_place_auth" type="submit">{props.button}</button>
+        {props.isSignUp && <Link to="/sign-in" className="form__link">Уже зарегистрированы? Войти</Link>}
       </form>
-      <InfoTooltip
-        isOpen={isInfoTooltipOpen}
-        setOpenState={setIsInfoTooltipOpen}
-        {...status}
-      />
-    </>
-  );
+    </div>
+  )
 }
 
 export default FormAuth;

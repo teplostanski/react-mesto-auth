@@ -1,27 +1,17 @@
-import React from "react";
-
-function ImagePopup({ card, onClose }) {
+function ImagePopup(props) {
+  const popupClassName = props.isOpen ? "popup popup_opened" : "popup";
   return (
-    <div className={`popup ${card ? "popup_opened" : ""}`}>
-      {card && (
-        <div className="popup__gallery">
-          <button
-            type="button"
-            className="popup__close"
-            onClick={onClose}
-          ></button>
-          <figure className="popup__figure">
-            <img
-              className="popup__img-gallery"
-              src={card.link}
-              alt={card.name}
-            />
-            <figcaption className="popup__figcaption">{card.name}</figcaption>
-          </figure>
-        </div>
-      )}
+    <div className={popupClassName} onClick={props.closeByOverlay}>
+      <button className="popup__close" type="button" onClick={props.onClose}>
+      </button>
+      <img className="popup__img-gallery" src={props.card.link}
+           alt={props.card.name}/>
+      <h3 className="popup__figcaption">{props.card.name}</h3>
     </div>
   );
 }
 
 export default ImagePopup;
+
+
+

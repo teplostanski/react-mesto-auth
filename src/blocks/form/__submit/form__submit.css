@@ -1,11 +1,16 @@
 ﻿.form__submit {
-  border: none;
-  background-color: black;
-  color: white;
-  border-radius: 2px;
+  width: 358px;
   height: 50px;
+  color: #fff;
+  font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  background: #000000;
+  border-radius: 2px;
+  border: none;
+  transition: opacity 0.2s ease-out;
+  cursor: pointer;
+  margin: 27px auto 37px auto;
 }
 
 .form__submit:hover:not([disabled]) {
@@ -14,8 +19,10 @@
 
 @media screen and (max-width: 500px) {
   .form__submit {
+    width: 238px;
+    height: 46px;
     font-size: 14px;
     line-height: 17px;
-    height: 46px;
+    margin-bottom: 25px;
   }
 }

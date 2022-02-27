@@ -2,4 +2,19 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-top: 9px;
+  width: 358px;
+}
+
+.form__field:first-of-type{
+  margin-top: 45px;
+}
+
+@media screen and (max-width: 650px)  {
+  .form__field:first-of-type{
+    margin-top: 60px;
+  }
+  .form__field {
+    width: 238px;
+  }
 }
