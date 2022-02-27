@@ -10,3 +10,4 @@
 ```
 npm install
 ```
+Ссылка на GH-Page https://r0bomurlok.github.io/react-mesto-auth/
