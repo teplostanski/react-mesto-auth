@@ -10,15 +10,17 @@ function Register(props) {
   function handleSubmit(email, password) {
     auth.register(email, password)
       .then(data => {
-        console.log(data);
-        if (data.error) {
-          props.handleInfoTooltip(false, data.error);
-        } else if (data.email) {
+        if (data.email) {
           props.handleInfoTooltip(true, successMessage);
           navigate("/sign-in")
+        } else if (data.error) {
+          throw new Error(data.error)
         } else {
-          props.handleInfoTooltip(false, 'Что-то пошло не так');
+          throw new Error('Что-то пошло не так');
         }
+      })
+      .catch((data) => {
+        props.handleInfoTooltip(false, data.message);
       });
   }
   return (

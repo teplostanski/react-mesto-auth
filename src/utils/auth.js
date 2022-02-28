@@ -54,6 +54,9 @@ export const authorize = (email, password) => {
       } else {
         throw new Error('Missing jwt token in response');
       }
+    })
+    .catch((err) => {
+      return err.message;
     });
 };
 

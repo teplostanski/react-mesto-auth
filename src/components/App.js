@@ -66,13 +66,17 @@ function App() {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      auth.checkToken(jwt).then((res) => {
+      auth.checkToken(jwt)
+      .then((res) => {
         if (res) {
           setCurrentUserEmail(res.data.email);
           setLoggedIn(true);
           navigate("/");
         }
       })
+      .catch((err) => {
+        console.log(err);
+      });
     }
   }, [loggedIn, setCurrentUserEmail, setLoggedIn, navigate]);
 
@@ -197,11 +201,22 @@ function App() {
     setInfoMessage(message);
   }
 
+  function signOut() {
+    localStorage.removeItem('jwt');
+    handleLogout();
+    navigate('/sign-in');
+  }
+
   return (
 
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
-        <Header isLoggedIn={loggedIn} currentUserEmail={currentUserEmail} handleLogout={handleLogout}/>
+        <Header
+          onClick={signOut}
+          isLoggedIn={loggedIn}
+          currentUserEmail={currentUserEmail}
+          handleLogout={handleLogout}
+        />
 
           <Routes>
             <Route
@@ -218,6 +233,7 @@ function App() {
             />
 
             <Route
+              exact
               path="/"
               element={
                 <RequireAuth redirectTo="./sign-up" loggedIn={loggedIn}>
