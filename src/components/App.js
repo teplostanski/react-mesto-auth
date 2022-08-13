@@ -234,9 +234,9 @@ function App() {
 
             <Route
               exact
-              path="/"
+              path={process.env.PUBLIC_URL + '/'}
               element={
-                <RequireAuth redirectTo="./sign-up" loggedIn={loggedIn}>
+                <RequireAuth redirectTo="/sign-up" loggedIn={loggedIn}>
                   <Main
                     onAddPlace={handleAddPlaceClick}
                     onEditAvatar={handleEditAvatarClick}
