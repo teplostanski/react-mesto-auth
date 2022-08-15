@@ -21,7 +21,7 @@
 
 ---
 
-### *Посмотреть пороект на GitHub Pages: https://r0bomurlok.github.io/react-mesto-auth/*
+### *Посмотреть проект на GitHub Pages: https://r0bomurlok.github.io/react-mesto-auth/*
 
 ### *Проект раелизован по макету из [Figma](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=0%3A1)*
 
