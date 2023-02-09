@@ -9,10 +9,10 @@
   box-sizing: border-box;
   border-radius: 2px;
   background-size: 22px 22px;
-  
+
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 910px) {
   .profile__add-button {
     width: 88%;
     max-width: 580px;

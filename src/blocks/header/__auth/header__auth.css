@@ -1,4 +1,16 @@
 .header__auth {
   display: flex;
-  gap: 24px;
+}
+
+@media screen and (max-width: 630px) {
+  .header__auth {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .header__auth {
+    gap: 15px;
+  }
 }

@@ -11,8 +11,11 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 440px) {
   .header {
-    margin: 24px 0 0 0;
+    margin: 0;
+    padding: 24px 0 24px 0;
+    align-items: flex-end;
+    flex-direction: column;
   }
 }

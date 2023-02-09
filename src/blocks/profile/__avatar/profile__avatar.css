@@ -7,9 +7,9 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 910px) {
+/*@media screen and (max-width: 910px) {
   .profile__avatar {
     margin: 40px 0 0 0;
   }
-}
+}*/
 

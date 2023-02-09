@@ -11,7 +11,7 @@ function Header(props) {
         {props.isLoggedIn
           ?
           <>
-            <div className="header__info">{props.currentUserEmail}</div>
+            <div className="header__info header__link">{props.currentUserEmail}</div>
             <Link to="/sign-in" className="header__link" onClick={props.onClick}> Выйти </Link>
           </>
           :
