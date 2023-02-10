@@ -234,7 +234,7 @@ function App() {
 
             <Route
               exact
-              path={'/' || process.env.PUBLIC_URL + '/'}
+              path={'/'}
               element={
                 <RequireAuth redirectTo="/sign-up" loggedIn={loggedIn}>
                   <Main
