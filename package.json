@@ -43,5 +43,5 @@
     "dotenv-webpack": "^8.0.1",
     "gh-pages": "^3.2.3"
   },
-  "homepage": "https://r0bomurlok.github.io/react-mesto-auth/"
+  "homepage": "."
 }
