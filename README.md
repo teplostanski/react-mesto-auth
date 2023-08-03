@@ -9,7 +9,7 @@
 ---
 ## *Описание*
 ----
-<p align="center"><img src="mesto.png" alt="скриншот проекта" width="700px"></a></p>
+<p align="center"><img src="screen.png" alt="скриншот проекта" width="700px"></a></p>
 
 ### ***О чём проект?***
 
